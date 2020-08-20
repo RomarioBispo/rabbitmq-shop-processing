@@ -13,6 +13,9 @@ target/
 .springBeans
 .sts4-cache
 
+### pid ###
+.attach*
+
 ### IntelliJ IDEA ###
 .idea
 *.iws
