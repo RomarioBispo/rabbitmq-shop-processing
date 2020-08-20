@@ -5,19 +5,15 @@ import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Component;
 
 import br.com.codevelopment.common.dto.ProductDTO;
-import br.com.codevelopment.shop.service.contract.ProductService;
+import br.com.codevelopment.common.service.contract.ShopService;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
-@Component
 @Slf4j
+@Component
+@RequiredArgsConstructor
 public class ShopReceiver {
-	
-    public ShopReceiver(ProductService service) {
-		super();
-		this.service = service;
-	}
-
-	private	ProductService service;
+	private	final ShopService service;
 	
 	@RabbitListener(queues = {"${queue.processing.name}"})
     public void receive(@Payload ProductDTO productDTO) {
