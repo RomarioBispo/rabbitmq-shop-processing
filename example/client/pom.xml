@@ -13,8 +13,12 @@
 
 	<properties>
 		<java.version>11</java.version>
+		<project.build.sourceEncoding> UTF-8 </project.build.sourceEncoding>
+		<start-class> br.com.codevelopment.client.ClientApplication </start-class>
+		<docker.image.name> romariobispo/client-service </docker.image.name>
+		<docker.image.tag> latest </docker.image.tag>
 	</properties>
-
+	
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -28,14 +32,32 @@
 			<version>${project.version}</version>
 		</dependency>
 	</dependencies>
-
+	
 	<build>
+	   <finalName>client</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<plugin>
+				<groupId>com.google.cloud.tools</groupId>
+				<artifactId>jib-maven-plugin</artifactId>
+				<version>2.5.2</version>
+				<configuration>
+					<to>
+						<image>registry.hub.docker.com/romariobispo/shop-producer:${docker.image.tag}</image>
+					</to>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>build</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
-
 </project>
