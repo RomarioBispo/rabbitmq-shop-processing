@@ -13,8 +13,12 @@
 
 	<properties>
 		<java.version>11</java.version>
+		<project.build.sourceEncoding> UTF-8 </project.build.sourceEncoding>
+		<start-class> br.com.codevelopment.ShopApplication </start-class>
+		<docker.image.name> romariobispo/shop-service </docker.image.name>
+		<docker.image.tag> latest </docker.image.tag>
 	</properties>
-
+	
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -28,12 +32,16 @@
 			<version>${project.version}</version>
 		</dependency>
 	</dependencies>
-
+	
 	<build>
+	   <finalName>shop</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+<!-- 				<configuration> -->
+<!-- 					<outputDirectory>../docker</outputDirectory> -->
+<!-- 				</configuration> -->
 			</plugin>
 		</plugins>
 	</build>
